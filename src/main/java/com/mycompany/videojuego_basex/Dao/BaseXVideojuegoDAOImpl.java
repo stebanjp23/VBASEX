@@ -61,7 +61,7 @@ public class BaseXVideojuegoDAOImpl implements VideojuegoDao {
     }
 
     @Override
-    public void cercarPerId(String id_buscar) {
+    public boolean cercarPerId(String id_buscar) {
         try {
             LocalSession lc = ConexionBaseX.getSession();
             String consulta
@@ -86,32 +86,59 @@ public class BaseXVideojuegoDAOImpl implements VideojuegoDao {
 
                 Videojuego encontrado = new Videojuego(separa[0], separa[1], separa[2], separa[3], Double.parseDouble(separa[4]), separa[5].split(","), separa[6]);
                 System.out.println(encontrado.toString());
-                
-            }else{
-                System.out.println("No hay resultado con el id ["+id_buscar+"]");
-            }
+                return true;
 
-           
+            } else {
+                System.out.println("No hay resultado con el id [" + id_buscar + "]");
+            }
 
         } catch (IOException e) {
             System.out.println("Conexión no se ha podido establecer");
             System.out.println(e.getMessage());
         }
+        return false;
     }
 
     @Override
     public void inserir(Videojuego joc) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            LocalSession lc = ConexionBaseX.getSession();
+            
+            // 🔹 construir plataformas dinámicamente
+            StringBuilder plataforms = new StringBuilder();
+            for (String p : joc.getPlataforma()) {
+                plataforms.append("<plataforma>").append(p).append("</plataforma>");
+            }
+
+            // 🔹 construir XML del juego
+            String nouJoc
+                    = "<joc id='" + joc.getId() + "' estat='" + joc.getEstado() + "'>"
+                    + "<titol>" + joc.getTitulo() + "</titol>"
+                    + "<desenvolupador>" + joc.getDesarrollador()+ "</desenvolupador>"
+                    + "<preu>" + joc.getPrecio() + "</preu>"
+                    + "<plataformes>" + plataforms.toString() + "</plataformes>"
+                    + "<any_llancament>" + joc.getAño() + "</any_llancament>"
+                    + "</joc>";
+
+            // 🔹 query final
+            String consulta = "insert node " + nouJoc + " into /cataleg";
+
+            // 🔹 ejecutar
+            lc.execute(consulta);
+
+        } catch (IOException e) {
+            System.out.println("Conexión no se ha podido establecer");
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
     public void eliminar(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void modificarPreu(String id, double nouPreu) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
