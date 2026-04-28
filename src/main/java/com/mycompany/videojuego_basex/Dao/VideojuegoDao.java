@@ -5,7 +5,7 @@
 package com.mycompany.videojuego_basex.Dao;
 
 import com.mycompany.videojuego_basex.Modelo.Videojuego;
-import java.util.List;
+import com.mycompany.videojuego_basex.Modelo.Videojuego.Estado;
 
 /**
  *
@@ -16,7 +16,7 @@ public interface VideojuegoDao {
     //Listar todo
     void llistarTots();
     //Buscar juego 
-    void cercarPerId(String id);
+    boolean cercarPerId(String id);
     
     //Añadir nuevo juego
     void inserir(Videojuego joc);
@@ -26,4 +26,7 @@ public interface VideojuegoDao {
     
     //modificar un videojuego
     void modificarPreu(String id, double nouPreu);
+    
+    //Modificar estado
+    void modificarEstado(String id, Estado nouEstat);
 }
