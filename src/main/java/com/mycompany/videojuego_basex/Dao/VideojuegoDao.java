@@ -16,7 +16,7 @@ public interface VideojuegoDao {
     //Listar todo
     void llistarTots();
     //Buscar juego 
-    Videojuego cercarPerId(String id);
+    void cercarPerId(String id);
     
     //Añadir nuevo juego
     void inserir(Videojuego joc);

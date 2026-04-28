@@ -13,15 +13,33 @@ public class VideoJuego_BASEX {
         try (LocalSession session = ConexionBaseX.getSession()) {
             int s;
             
-            System.out.println("Pulsa 1 para listar: ");
+            menu();
+            System.out.print("Selecciona: ");
             s = lector.nextInt();
+            lector.nextLine();
             
-            if(s == 1){
-                BX.llistarTots();
+            switch (s) {
+                case 1:
+                    BX.llistarTots();
+                    break;
+                case 2:
+                    String id;
+                    System.out.print("Introduce el id: ");
+                    id = lector.nextLine().toLowerCase();
+                    BX.cercarPerId(id);
+                    break;
+                default:
+                    throw new AssertionError();
             }
             
         } finally {
             ConexionBaseX.close();
         }
+    }
+    
+    public static void menu(){
+        System.out.println("------- MENU BASEX ----------");
+        System.out.println("1. Listar ");
+        System.out.println("2. Buscar juego ");
     }
 }
