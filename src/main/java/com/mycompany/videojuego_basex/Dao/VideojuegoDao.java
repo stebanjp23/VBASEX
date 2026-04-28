@@ -14,7 +14,7 @@ import java.util.List;
 public interface VideojuegoDao {
     
     //Listar todo
-    List<Videojuego> llistarTots();
+    void llistarTots();
     //Buscar juego 
     Videojuego cercarPerId(String id);
     

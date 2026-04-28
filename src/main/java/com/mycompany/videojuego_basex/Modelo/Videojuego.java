@@ -9,6 +9,7 @@ package com.mycompany.videojuego_basex.Modelo;
  * @author juane
  */
 public class Videojuego {
+
     private String id;
     private String estado;
     private String titulo;
@@ -29,7 +30,6 @@ public class Videojuego {
         this.plataforma = plataforma;
         this.año = año;
     }
-    
 
     public String getId() {
         return id;
@@ -86,5 +86,18 @@ public class Videojuego {
     public void setAño(String año) {
         this.año = año;
     }
-    
+
+    @Override
+    public String toString() {
+        return "🎮 Videojoc\n"
+                + "----------------------------------\n"
+                + "ID: " + id + "\n"
+                + "Estat: " + estado + "\n"
+                + "Títol: " + titulo + "\n"
+                + "Desenvolupador: " + desarrollador + "\n"
+                + "Preu: " + precio + " €\n"
+                + "Plataformes: " + String.join(", ", plataforma) + "\n"
+                + "Any: " + año + "\n";
+    }
+
 }
