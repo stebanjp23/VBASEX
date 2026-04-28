@@ -9,9 +9,15 @@ package com.mycompany.videojuego_basex.Modelo;
  * @author juane
  */
 public class Videojuego {
-
+    
+    public enum Estado {
+        DISPONIBLE,
+        AGOTADO,
+        OFERTA
+    }
+    
     private String id;
-    private String estado;
+    private Estado estado;
     private String titulo;
     private String desarrollador;
     private double precio;
@@ -21,7 +27,7 @@ public class Videojuego {
     public Videojuego() {
     }
 
-    public Videojuego(String id, String estado, String titulo, String desarrollador, double precio, String[] plataforma, String año) {
+    public Videojuego(String id, Estado estado, String titulo, String desarrollador, double precio, String[] plataforma, String año) {
         this.id = id;
         this.estado = estado;
         this.titulo = titulo;
@@ -39,11 +45,11 @@ public class Videojuego {
         this.id = id;
     }
 
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
@@ -92,7 +98,7 @@ public class Videojuego {
         return "🎮 Videojoc\n"
                 + "----------------------------------\n"
                 + "ID: " + id + "\n"
-                + "Estat: " + estado + "\n"
+                + "Estat: " + estado.toString() + "\n"
                 + "Títol: " + titulo + "\n"
                 + "Desenvolupador: " + desarrollador + "\n"
                 + "Preu: " + precio + " €\n"

@@ -5,8 +5,7 @@
         <desenvolupador>Nintendo</desenvolupador>
         <preu>59.99</preu>
         <plataformes>
-            <plataforma>Nintendo Switch</plataforma>
-            <plataforma>Wii U</plataforma>
+            <plataforma>nintendo</plataforma>
         </plataformes>
         <any_llancament>2017</any_llancament>
     </joc>
@@ -16,22 +15,22 @@
         <desenvolupador>CD Projekt Red</desenvolupador>
         <preu>19.99</preu>
         <plataformes>
-            <plataforma>PC</plataforma>
-            <plataforma>PlayStation 4</plataforma>
-            <plataforma>Xbox One</plataforma>
+            <plataforma>pc</plataforma>
+            <plataforma>playstation</plataforma>
+            <plataforma>xbox</plataforma>
         </plataformes>
         <any_llancament>2015</any_llancament>
     </joc>
 
-    <joc id="v03" estat="esgotat">
+    <joc id="v03" estat="agotado">
         <titol>Hollow Knight</titol>
         <desenvolupador>Team Cherry</desenvolupador>
         <preu>14.99</preu>
         <plataformes>
-            <plataforma>PC</plataforma>
-            <plataforma>Nintendo Switch</plataforma>
-            <plataforma>PlayStation 4</plataforma>
-            <plataforma>Xbox One</plataforma>
+            <plataforma>pc</plataforma>
+            <plataforma>nintendo</plataforma>
+            <plataforma>playstation</plataforma>
+            <plataforma>xbox</plataforma>
         </plataformes>
         <any_llancament>2017</any_llancament>
     </joc>
