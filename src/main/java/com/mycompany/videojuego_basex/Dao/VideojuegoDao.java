@@ -26,4 +26,7 @@ public interface VideojuegoDao {
     
     //modificar un videojuego
     void modificarPreu(String id, double nouPreu);
+    
+    //Modificar estado
+    void modificarEstado(String id, String nouEstat);
 }

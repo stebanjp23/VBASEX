@@ -103,7 +103,7 @@ public class BaseXVideojuegoDAOImpl implements VideojuegoDao {
     public void inserir(Videojuego joc) {
         try {
             LocalSession lc = ConexionBaseX.getSession();
-            
+
             // 🔹 construir plataformas dinámicamente
             StringBuilder plataforms = new StringBuilder();
             for (String p : joc.getPlataforma()) {
@@ -114,7 +114,7 @@ public class BaseXVideojuegoDAOImpl implements VideojuegoDao {
             String nouJoc
                     = "<joc id='" + joc.getId() + "' estat='" + joc.getEstado() + "'>"
                     + "<titol>" + joc.getTitulo() + "</titol>"
-                    + "<desenvolupador>" + joc.getDesarrollador()+ "</desenvolupador>"
+                    + "<desenvolupador>" + joc.getDesarrollador() + "</desenvolupador>"
                     + "<preu>" + joc.getPrecio() + "</preu>"
                     + "<plataformes>" + plataforms.toString() + "</plataformes>"
                     + "<any_llancament>" + joc.getAño() + "</any_llancament>"
@@ -135,10 +135,48 @@ public class BaseXVideojuegoDAOImpl implements VideojuegoDao {
 
     @Override
     public void eliminar(String id) {
+        try {
+            LocalSession lc = ConexionBaseX.getSession();
+            String consulta = "delete node //joc[@id='" + id + "']";
+
+            lc.execute(consulta);
+            System.out.println("Juego eliminado con exito!");
+
+        } catch (IOException e) {
+            System.out.println("Conexión no se ha podido establecer");
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
     public void modificarPreu(String id, double nouPreu) {
+        try {
+            LocalSession lc = ConexionBaseX.getSession();
+            String consulta = "replace value of node //joc[@id='" + id + "']"
+                    +"/preu with "+nouPreu;
+
+            lc.execute(consulta);
+
+        } catch (IOException e) {
+            System.out.println("Conexión no se ha podido establecer");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void modificarEstado(String id, String nouEstat) {
+        try {
+            LocalSession lc = ConexionBaseX.getSession();
+            String consulta = "replace value of node //joc[@id='" + id + "']"
+                    +"/@estat with "+nouEstat;
+
+            lc.execute(consulta);
+
+        } catch (IOException e) {
+            System.out.println("Conexión no se ha podido establecer");
+            System.out.println(e.getMessage());
+        }
     }
 
 }

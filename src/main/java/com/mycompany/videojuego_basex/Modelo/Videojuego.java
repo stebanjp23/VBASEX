@@ -15,13 +15,13 @@ public class Videojuego {
     private String titulo;
     private String desarrollador;
     private double precio;
-    private String plataforma;
+    private String[] plataforma;
     private String año;
 
     public Videojuego() {
     }
 
-    public Videojuego(String id, String estado, String titulo, String desarrollador, double precio, String plataforma, String año) {
+    public Videojuego(String id, String estado, String titulo, String desarrollador, double precio, String[] plataforma, String año) {
         this.id = id;
         this.estado = estado;
         this.titulo = titulo;
