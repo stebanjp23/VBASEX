@@ -4,10 +4,26 @@
  */
 package com.mycompany.videojuego_basex.Dao;
 
+import com.mycompany.videojuego_basex.Modelo.Videojuego;
+import java.util.List;
+
 /**
  *
  * @author juane
  */
-public class VideojuegoDao {
+public interface VideojuegoDao {
     
+    //Listar todo
+    List<Videojuego> llistarTots();
+    //Buscar juego 
+    Videojuego cercarPerId(String id);
+    
+    //Añadir nuevo juego
+    void inserir(Videojuego joc);
+    
+    //Eliminar juego 
+    void eliminar(String id);
+    
+    //modificar un videojuego
+    void modificarPreu(String id, double nouPreu);
 }
